@@ -15,7 +15,9 @@ import {
   Alert,
   CardGroup,
   Accordion,
-  Col
+  Col,
+  Container,
+  Row
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -31,7 +33,6 @@ function Header() {
           <Nav.Link href="about">About</Nav.Link>
           <NavDropdown title="More info" id="basic-nav-dropdown">
             <NavDropdown.Item href="resume">Resume</NavDropdown.Item>
-            <NavDropdown.Item href="customers">Customers</NavDropdown.Item>
             <NavDropdown.Item href="contact">
               Contact About Pricing
             </NavDropdown.Item>
@@ -145,9 +146,7 @@ function Resume() {
     <Carousel>
       <Carousel.Item>
         <img
-          width={1920}
-          height={1080}
-          alt="1920x1080"
+          
           className="d-block w-100"
           src="..\1.jpg"
           alt="Pipe framing"
@@ -155,9 +154,7 @@ function Resume() {
       </Carousel.Item>
       <Carousel.Item>
         <img
-          width={1920}
-          height={1080}
-          alt="1920x1080"
+          
           className="d-block w-100"
           src="..\2.jpg"
           alt="Boiler Removal"
@@ -182,7 +179,6 @@ function Resume() {
         <img className="d-block w-100" src="..\7.jpg" alt="Pipe framing" />
       </Carousel.Item>
     </Carousel>
- 
   );
 }
 function Footer() {
@@ -194,25 +190,22 @@ function Footer() {
     </footer>
   );
 }
-
 function Contact() {
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-
+  const [isFirstValid, setIsFirstValid] = useState(false);
+  const [isLastValid, setIsLastValid] = useState(false);
   const [validated, setValidated] = useState(false);
-  const onSubmit = event => {
-    event.preventDefault();
-    console.log(first, last, email, phone);
-  };
+  const [isAlpha, setIsAlpha] = useState(false);
+  const [isNumeric, setIsNumeric] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(false);
   const handleSubmit = event => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
-      event.stopPropagation();
     }
-
     setValidated(true);
   };
 
@@ -222,6 +215,7 @@ function Contact() {
     email,
     phone
   ]);
+
   return (
     <>
       <Jumbotron>
@@ -233,68 +227,132 @@ function Contact() {
       <h1>Enter your information below.</h1>
 
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Form.Row>
+        <Form.Row
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
           <Form.Group as={Col} md="4" controlId="validationCustom01">
             <FormControl
               required
               name="firstname"
               value={first}
               placeholder="First name"
-              bg="light"
-              onChange={event => setFirst(event.target.value)}
+              onChange={event => {
+                setFirst(event.target.value);
+                setIsFirstValid(event.target.value.length > 0);
+                setIsAlpha(event.target.value.search(/[^A-Za-z\s]/) !== -1);
+              }}
             />
 
-            <Form.Control.Feedback>looks good</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">
+              Please enter this information
+            </Form.Control.Feedback>
           </Form.Group>
         </Form.Row>
-      </Form>
-      <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Form.Row>
+
+        <Form.Row
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
           <Form.Group as={Col} md="4" controlId="validationCustom01">
             <FormControl
               required
               name="lastname"
               value={last}
               placeholder="Last name"
-              onChange={event => setLast(event.target.value)}
+              onChange={event => {
+                setLast(event.target.value);
+                setIsLastValid(event.target.value.length > 0);
+                setIsAlpha(event.target.value.search(/[^A-Za-z\s]/) !== -1);
+              }}
             />
-            <Form.Control.Feedback>looks good</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">
+              Please enter this information
+            </Form.Control.Feedback>
           </Form.Group>
         </Form.Row>
-      </Form>
-      <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Form.Row>
+
+        <Form.Row
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
           <Form.Group as={Col} md="4" controlId="validationCustom01">
             <FormControl
               required
               name="email"
               placeholder="Email"
               value={email}
-              onChange={event => setEmail(event.target.value)}
+              onChange={event => {
+                setEmail(event.target.value);
+                setIsLastValid(event.target.value.length > 0);
+                setIsEmailValid(event.target.value.search(/['@']/) !== -1);
+              }}
             />
-            <Form.Control.Feedback>looks good</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">
+              Please enter this information
+            </Form.Control.Feedback>
           </Form.Group>
         </Form.Row>
-      </Form>
-      <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Form.Row>
+
+        <Form.Row
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
           <Form.Group as={Col} md="4" controlId="validationCustom01">
             <FormControl
               required
               name="phone"
               placeholder="Phone number"
               value={phone}
-              onChange={event => setPhone(event.target.value)}
+              onChange={event => {
+                setPhone(event.target.value);
+                setIsLastValid(event.target.value.length > 0);
+                setIsNumeric(event.target.value.search(/[^A-Za-z\s]/) === -1);
+              }}
             />
-            <Form.Control.Feedback>looks good</Form.Control.Feedback>
-            <Button type="submit">Submit</Button>
+            <Form.Control.Feedback type="invalid">
+              Please enter this information
+            </Form.Control.Feedback>
+            <Form.Row
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
+              <Form.Group as={Col} md="4" controlId="validationCustom01">
+                <Button
+                  disabled={
+                    !isFirstValid +
+                    !isLastValid +
+                    isAlpha +
+                    !isEmailValid +
+                    isNumeric
+                  }
+                  onClick={() => alert("Thank you, we will be in contact soon")}
+                >
+                  Submit
+                </Button>
+              </Form.Group>
+            </Form.Row>
           </Form.Group>
         </Form.Row>
       </Form>
     </>
   );
 }
-
 function App() {
   return (
     <Router>
