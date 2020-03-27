@@ -164,7 +164,7 @@ function Footer() {
   return (
     <footer className="footer mt-auto py-3 bg-dark text-white">
       <div className="container">
-        Reach out today at: 555-555-5555 or via email at jake.strass@gmail.com
+        Reach out today via the contact page.
       </div>
     </footer>
   );
