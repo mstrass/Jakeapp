@@ -24,8 +24,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function Header() {
   return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="home">Jake's Mountain Welding</Navbar.Brand>
+    <Navbar className="color-nav" variant="light" expand="lg">
+      <Navbar.Brand href="home">Jake's Welding Co.</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
@@ -34,7 +34,7 @@ function Header() {
           <NavDropdown title="More info" id="basic-nav-dropdown">
             <NavDropdown.Item href="resume">Resume</NavDropdown.Item>
             <NavDropdown.Item href="contact">
-              Contact About Pricing
+              Contact for Pricing
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>
@@ -46,7 +46,7 @@ function Home() {
   return (
     <div>
       <Jumbotron>
-        <h1>Jake's Mountain Welding</h1>
+        <h1>Jake's Welding Co.</h1>
         <p>Available for jobs across Western Colorado</p>
         <Image src="..\20151001_135507.jpg" fluid className="mb-3" />
         <p>
@@ -55,7 +55,7 @@ function Home() {
           </Button>
         </p>
       </Jumbotron>
-
+      
       <CardGroup>
         <Card>
           <Card.Img variant="top" src="..\20160922_141205.jpg" />
@@ -109,35 +109,18 @@ function About() {
       <Alert variant="success">
         <Alert.Heading>Hey, nice to see you</Alert.Heading>
         <p>
-          Aww yeah, you successfully read this important alert message. This
-          example text is going to run a bit longer so that you can see how
-          spacing within an alert works with this kind of content.
+          Jake is originally from Scottsdale, Arizona and moved to Eagle,Colorado in 2018.
+          After working in the hotel maintainence industry, he shifted his career into welding.
+          He studied welding at Colorado Mountain College in Leadville, Colorado where he recieved high marks.
+          He is currently working on getting a master welder certification.
+          He loves to be outdoors fishing and going off roading on the weekends.
         </p>
         <hr />
         <p className="mb-0">
-          Whenever you need to, be sure to use margin utilities to keep things
-          nice and tidy.
+          Reach out and meet Jake yourself. Find out how to reach him on the contact page.
         </p>
+        <Button href="../contact">Click here for his contact information</Button>
       </Alert>
-
-      <Accordion defaultActiveKey="0">
-        <Card>
-          <Accordion.Toggle as={Card.Header} eventKey="0">
-            Click me!
-          </Accordion.Toggle>
-          <Accordion.Collapse eventKey="0">
-            <Card.Body>Hello! I'm the body</Card.Body>
-          </Accordion.Collapse>
-        </Card>
-        <Card>
-          <Accordion.Toggle as={Card.Header} eventKey="1">
-            Click me!
-          </Accordion.Toggle>
-          <Accordion.Collapse eventKey="1">
-            <Card.Body>Hello! I'm another body</Card.Body>
-          </Accordion.Collapse>
-        </Card>
-      </Accordion>
     </div>
   );
 }
@@ -342,14 +325,15 @@ function Contact() {
                     isNumeric
                   }
                   onClick={() => alert("Thank you, we will be in contact soon")}
-                >
-                  Submit
-                </Button>
+                >Submit
+                  </Button>
+                  
               </Form.Group>
             </Form.Row>
           </Form.Group>
         </Form.Row>
       </Form>
+      
     </>
   );
 }
