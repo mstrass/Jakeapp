@@ -21,6 +21,8 @@ import {
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { StaticKitProvider } from "@statickit/react";
+import { useForm, ValidationError } from '@statickit/react';
 
 function Header() {
   return (
@@ -55,7 +57,7 @@ function Home() {
           </Button>
         </p>
       </Jumbotron>
-      
+
       <CardGroup>
         <Card>
           <Card.Img variant="top" src="..\20160922_141205.jpg" />
@@ -109,17 +111,22 @@ function About() {
       <Alert variant="success">
         <Alert.Heading>Hey, nice to see you</Alert.Heading>
         <p>
-          Jake is originally from Scottsdale, Arizona and moved to Eagle,Colorado in 2018.
-          After working in the hotel maintainence industry, he shifted his career into welding.
-          He studied welding at Colorado Mountain College in Leadville, Colorado where he recieved high marks.
-          He is currently working on getting a master welder certification.
-          He loves to be outdoors fishing and going off roading on the weekends.
+          Jake is originally from Scottsdale, Arizona and moved to
+          Eagle,Colorado in 2018. After working in the hotel maintainence
+          industry, he shifted his career into welding. He studied welding at
+          Colorado Mountain College in Leadville, Colorado where he recieved
+          high marks. He is currently working on getting a master welder
+          certification. He loves to be outdoors fishing and going off roading
+          on the weekends.
         </p>
         <hr />
         <p className="mb-0">
-          Reach out and meet Jake yourself. Find out how to reach him on the contact page.
+          Reach out and meet Jake yourself. Find out how to reach him on the
+          contact page.
         </p>
-        <Button href="../contact">Click here for his contact information</Button>
+        <Button href="../contact">
+          Click here for his contact information
+        </Button>
       </Alert>
     </div>
   );
@@ -128,20 +135,10 @@ function Resume() {
   return (
     <Carousel>
       <Carousel.Item>
-        <img
-          
-          className="d-block w-100"
-          src="..\1.jpg"
-          alt="Pipe framing"
-        />
+        <img className="d-block w-100" src="..\1.jpg" alt="Pipe framing" />
       </Carousel.Item>
       <Carousel.Item>
-        <img
-          
-          className="d-block w-100"
-          src="..\2.jpg"
-          alt="Boiler Removal"
-        />
+        <img className="d-block w-100" src="..\2.jpg" alt="Boiler Removal" />
       </Carousel.Item>
       <Carousel.Item>
         <img className="d-block w-100" src="..\3.jpg" alt="Welding man" />
@@ -173,7 +170,7 @@ function Footer() {
     </footer>
   );
 }
-function Contact() {
+function Contact(props) {
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [email, setEmail] = useState("");
@@ -185,19 +182,11 @@ function Contact() {
   const [isNumeric, setIsNumeric] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(false);
   const handleSubmit = event => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-    }
-    setValidated(true);
-  };
-
-  useEffect(() => console.log({ first, last, email, phone }), [
-    first,
-    last,
-    email,
-    phone
-  ]);
+    const [state, handleSubmit] = useForm("contactForm");
+    if (state.succeeded) {
+      return <p>Thanks for joining!</p>;
+  }};
+  
 
   return (
     <>
@@ -318,6 +307,7 @@ function Contact() {
               <Form.Group as={Col} md="4" controlId="validationCustom01">
                 <Button
                   disabled={
+                    state.submitting+
                     !isFirstValid +
                     !isLastValid +
                     isAlpha +
@@ -325,22 +315,24 @@ function Contact() {
                     isNumeric
                   }
                   onClick={() => alert("Thank you, we will be in contact soon")}
-                >Submit
-                  </Button>
-                  
+                >
+                  Submit
+                </Button>
               </Form.Group>
             </Form.Row>
           </Form.Group>
         </Form.Row>
       </Form>
-      
     </>
   );
 }
-function App() {
+function App({ Component, pageProps }) {
   return (
     <Router>
       <div className="App">
+        <StaticKitProvider site="6651379c3e06">
+          <Component {...pageProps} />
+        </StaticKitProvider>
         <Header />
         <Switch>
           <Route path="/about">
