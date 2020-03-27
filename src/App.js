@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
-
+import { useStaticKit } from '@statickit/react';
+import { sendContactInformation } from '@statickit/functions';
+import { StaticKitProvider } from "@statickit/react";
 import {
   Nav,
   Navbar,
@@ -14,15 +16,12 @@ import {
   Carousel,
   Alert,
   CardGroup,
-  Accordion,
-  Col,
-  Container,
-  Row
+  Col
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { StaticKitProvider } from "@statickit/react";
-import { useForm, ValidationError } from '@statickit/react';
+
+
 
 function Header() {
   return (
@@ -170,22 +169,24 @@ function Footer() {
     </footer>
   );
 }
-function Contact(props) {
+function ContactForm() {
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [isFirstValid, setIsFirstValid] = useState(false);
   const [isLastValid, setIsLastValid] = useState(false);
-  const [validated, setValidated] = useState(false);
   const [isAlpha, setIsAlpha] = useState(false);
   const [isNumeric, setIsNumeric] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(false);
-  const handleSubmit = event => {
-    const [state, handleSubmit] = useForm("contactForm");
-    if (state.succeeded) {
-      return <p>Thanks for joining!</p>;
-  }};
+  const client = useStaticKit()  
+  const handleSubmit = async(event) => {
+    event.preventDefault();
+    sendContactInformation(client, {
+      subject: "Contact from Jake's App",
+      fields: {body: ` You have been contacted by ${first} ${last}. Their email address is ${email} and their phone number is ${phone}}`}
+    });
+  }
   
 
   return (
@@ -198,7 +199,7 @@ function Contact(props) {
 
       <h1>Enter your information below.</h1>
 
-      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form onSubmit= {handleSubmit}>
         <Form.Row
           style={{
             display: "flex",
@@ -218,7 +219,7 @@ function Contact(props) {
                 setIsAlpha(event.target.value.search(/[^A-Za-z\s]/) !== -1);
               }}
             />
-
+             
             <Form.Control.Feedback type="invalid">
               Please enter this information
             </Form.Control.Feedback>
@@ -305,16 +306,15 @@ function Contact(props) {
               }}
             >
               <Form.Group as={Col} md="4" controlId="validationCustom01">
-                <Button
+                <Button type = "submit"
                   disabled={
-                    state.submitting+
                     !isFirstValid +
                     !isLastValid +
                     isAlpha +
                     !isEmailValid +
                     isNumeric
                   }
-                  onClick={() => alert("Thank you, we will be in contact soon")}
+                  
                 >
                   Submit
                 </Button>
@@ -323,16 +323,21 @@ function Contact(props) {
           </Form.Group>
         </Form.Row>
       </Form>
+      
     </>
   );
 }
-function App({ Component, pageProps }) {
-  return (
-    <Router>
+
+
+    
+
+function App(){
+return (
+     <>
+     <StaticKitProvider site="6651379c3e06">
+      
+     <Router>    
       <div className="App">
-        <StaticKitProvider site="6651379c3e06">
-          <Component {...pageProps} />
-        </StaticKitProvider>
         <Header />
         <Switch>
           <Route path="/about">
@@ -342,7 +347,7 @@ function App({ Component, pageProps }) {
             <Resume />
           </Route>
           <Route path="/contact">
-            <Contact />
+            <ContactForm />
           </Route>
           <Route path="/">
             <Home />
@@ -351,6 +356,9 @@ function App({ Component, pageProps }) {
         <Footer />
       </div>
     </Router>
+    
+    </StaticKitProvider>
+   </>  
   );
 }
 

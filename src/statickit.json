@@ -1,8 +1,11 @@
 {
-    "forms": {
-      "contactForm": {
-        "name": "Contact Form",
-        "actions": [{ "type": "email", "to": "mhstrass@gmail.com" }]
-      }
+  "forms": {
+    "contactForm": {
+      "name": "Contact Form",
+      "actions": [{ "type": "email", "to": "mhstrass@gmail.com" }]
     }
+  },
+  "functions": {
+    "sendContactInformation": { "type": "sendNotification", "to": "mhstrass@gmail.com" }
   }
+}
