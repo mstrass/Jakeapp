@@ -49,7 +49,7 @@ function Home() {
     <div>
       <Jumbotron>
         <h1>Jake's Welding Co.</h1>
-        <p>Available for jobs across Western Colorado</p>
+        <p>On time with guaranteed high quality Custom metal fabrication with fair and clear pricing. </p>
         <Image src="..\20151001_135507.jpg" fluid className="mb-3" />
         <p>
           <Button variant="primary" href="about">
@@ -64,19 +64,15 @@ function Home() {
           <Card.Body>
             <Card.Title>Flexible</Card.Title>
             <Card.Text>
-              Available anywhere on the western slope of Colorado and willing to
-              consider outside travel.
+              Available for work across Western Colorado.
             </Card.Text>
           </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
-          </Card.Footer>
         </Card>
         <Card>
           <Card.Img variant="top" src="..\20160914_154825.jpg" />
           <Card.Body>
             <Card.Title>Professional</Card.Title>
-            <Card.Text>Jake will provide high quality work. </Card.Text>
+            <Card.Text>Strong work ethic. Punctual. Honest</Card.Text>
           </Card.Body>
           <Card.Footer>
             <small className="text-muted">Last updated 3 mins ago</small>
@@ -87,8 +83,8 @@ function Home() {
           <Card.Body>
             <Card.Title>Reliable</Card.Title>
             <Card.Text>
-              Jake will provide high quality work. On time. Guaranteed. Clear
-              pricing.
+            Establish long lasting working relationships. Can provide references of previous work.  
+
             </Card.Text>
           </Card.Body>
           <Card.Footer>
