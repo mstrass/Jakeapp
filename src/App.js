@@ -132,32 +132,39 @@ function Resume() {
     <Carousel>
       <Carousel.Item>
         <img className="d-block w-100" src="..\1.jpg" alt="Pipe framing" />
-      </Carousel.Item>
       <CarouselCaption>Pipe welding</CarouselCaption>
+      </Carousel.Item>
+    
       <Carousel.Item>
         <img className="d-block w-100" src="..\2.jpg" alt="Boiler Removal" />
-      </Carousel.Item>
       <CarouselCaption>Boiler removal</CarouselCaption>
+      </Carousel.Item>
+    
       <Carousel.Item>
         <img className="d-block w-100" src="..\3.jpg" alt="Welding man" />
-      </Carousel.Item>
       <CarouselCaption>Door framing and security</CarouselCaption>
+      </Carousel.Item>
+    
       <Carousel.Item>
         <img className="d-block w-100" src="..\4.jpg" alt="P" />
-      </Carousel.Item>
       <CarouselCaption>Trailer fabrication step 1</CarouselCaption>
+      </Carousel.Item>
+    
       <Carousel.Item>
         <img className="d-block w-100" src="..\5.jpg" alt="i" />
-      </Carousel.Item>
       <CarouselCaption>Trailer fabrication step 2</CarouselCaption>    
+      </Carousel.Item>
+    
       <Carousel.Item>
         <img className="d-block w-100" src="..\6.jpg" alt="g" />
-      </Carousel.Item>
       <CarouselCaption>Trailer fabrication step 3</CarouselCaption>
+      </Carousel.Item>
+    
       <Carousel.Item>
         <img className="d-block w-100" src="..\7.jpg" alt="ng"/>
-      </Carousel.Item>
       <CarouselCaption>Trailer fabrication step 4</CarouselCaption>
+      </Carousel.Item>
+    
     </Carousel>
   );
 }
