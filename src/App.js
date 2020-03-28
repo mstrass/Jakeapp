@@ -104,25 +104,24 @@ function About() {
     <div>
       <Jumbotron>
         <h1>About Jake</h1>
-        <p>Available for jobs across Western Colorado</p>
+        
         <Image src="..\-3962722664213478831.jpg" fluid className="mb-3" />
       </Jumbotron>
 
       <Alert variant="success">
-        <Alert.Heading>Hey, nice to see you</Alert.Heading>
+        <Alert.Heading>Hi, nice to see you</Alert.Heading>
         <p>
-          Jake is originally from Scottsdale, Arizona and moved to
+          Jake is originally from Scottsdale, Arizona. He moved to
           Eagle,Colorado in 2018. After working in the hotel maintainence
           industry, he shifted his career into welding. He studied welding at
-          Colorado Mountain College in Leadville, Colorado where he recieved
-          high marks. He is currently working on getting a master welder
-          certification. He loves to be outdoors fishing and going off roading
+          Colorado Mountain College in Leadville, Colorado where he received
+          high marks. He is currently training to earn a master welder
+          certification. Jake loves to be outdoors, hiking, fishing, and off roading
           on the weekends.
         </p>
         <hr />
         <p className="mb-0">
-          Reach out and meet Jake yourself. Find out how to reach him on the
-          contact page.
+           Reach out to Jake for any welding needs.
         </p>
         <Button href="../contact">
           Click here for his contact information
@@ -198,7 +197,8 @@ function ContactForm() {
         <Image src="..\Capture.PNG" fluid className="mb-3" />
       </Jumbotron>
 
-      <h1>Enter your information below.</h1>
+      <h1> To contact Jake, please enter your information below and he will contact you as soon as possible.
+</h1>
 
     <Form onSubmit= {handleSubmit}>
         <Form.Row
