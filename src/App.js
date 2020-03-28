@@ -26,6 +26,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function Header() {
   return (
     <Navbar className="color-nav" variant="light" expand="lg">
+      <Navbar.Brand>
+          <img src="../android-chrome-192x192.png" style={{width:100, marginTop: -7}} />
+        </Navbar.Brand>
+        <Navbar.Toggle />
       <Navbar.Brand href="home">Jake's Welding Co.</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
