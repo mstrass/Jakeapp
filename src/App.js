@@ -20,6 +20,7 @@ import {
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import CarouselCaption from "react-bootstrap/CarouselCaption";
 
 
 
@@ -132,27 +133,31 @@ function Resume() {
       <Carousel.Item>
         <img className="d-block w-100" src="..\1.jpg" alt="Pipe framing" />
       </Carousel.Item>
+      <CarouselCaption>Pipe welding</CarouselCaption>
       <Carousel.Item>
         <img className="d-block w-100" src="..\2.jpg" alt="Boiler Removal" />
       </Carousel.Item>
+      <CarouselCaption>Boiler removal</CarouselCaption>
       <Carousel.Item>
         <img className="d-block w-100" src="..\3.jpg" alt="Welding man" />
       </Carousel.Item>
-
+      <CarouselCaption>Door framing and security</CarouselCaption>
       <Carousel.Item>
         <img className="d-block w-100" src="..\4.jpg" alt="P" />
       </Carousel.Item>
-
+      <CarouselCaption>Trailer fabrication step 1</CarouselCaption>
       <Carousel.Item>
         <img className="d-block w-100" src="..\5.jpg" alt="i" />
       </Carousel.Item>
+      <CarouselCaption>Trailer fabrication step 2</CarouselCaption>    
       <Carousel.Item>
         <img className="d-block w-100" src="..\6.jpg" alt="g" />
       </Carousel.Item>
-
+      <CarouselCaption>Trailer fabrication step 3</CarouselCaption>
       <Carousel.Item>
         <img className="d-block w-100" src="..\7.jpg" alt="ng"/>
       </Carousel.Item>
+      <CarouselCaption>Trailer fabrication step 4</CarouselCaption>
     </Carousel>
   );
 }
@@ -160,7 +165,6 @@ function Footer() {
   return (
     <footer className="footer mt-auto py-3 bg-dark text-white">
       <div className="container">
-        Reach out today via the contact page.
       </div>
     </footer>
   );
