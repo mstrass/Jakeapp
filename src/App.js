@@ -51,7 +51,7 @@ function Home() {
       <Jumbotron>
         <h1>Jake's Welding Co.</h1>
         <p>
-          On time with guaranteed high quality Custom metal fabrication with
+          On time with guaranteed high quality custom metal fabrication with
           fair and clear pricing.{" "}
         </p>
         <Image src="..\20151001_135507.jpg" fluid className="mb-3" />
@@ -76,9 +76,7 @@ function Home() {
             <Card.Title>Professional</Card.Title>
             <Card.Text>Strong work ethic. Punctual. Honest</Card.Text>
           </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
-          </Card.Footer>
+          
         </Card>
         <Card>
           <Card.Img variant="top" src="..\Hanging Lake.jpg" />
@@ -89,9 +87,7 @@ function Home() {
               references of previous work.
             </Card.Text>
           </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
-          </Card.Footer>
+          
         </Card>
       </CardGroup>
     </div>
