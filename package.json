@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@formspree/react": "^2.2.3",
     "@statickit/functions": "github:unstacked/statickit-functions#ea3d0c31-b248-479e-b5b1-d54d746a7477",
     "@statickit/react": "^2.1.0",
     "@testing-library/jest-dom": "^4.2.4",

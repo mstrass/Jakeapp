@@ -1,45 +1,38 @@
 import React, { useState } from "react";
 import "./App.css";
-import { useStaticKit } from "@statickit/react";
-import { sendContactInformation } from "@statickit/functions";
-import { StaticKitProvider } from "@statickit/react";
+import { useForm, ValidationError } from '@formspree/react';
 import {
   Nav,
   Navbar,
-  NavDropdown,
   Form,
   FormControl,
   Button,
   Card,
-  Jumbotron,
   Image,
-  Carousel,
-  Alert,
+  Jumbotron,
   CardGroup,
-  Col
+  Carousel,
+  Col,
+  Container,
+  Row,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import CarouselCaption from "react-bootstrap/CarouselCaption";
+
 
 function Header() {
   return (
     <Navbar className="color-nav" variant="light" expand="lg">
-      <Navbar.Brand href="home">
+      <Navbar.Brand href="home" style = {{fontWeight: "1000"}}>
         <img src="../favicon-32x32.png" />
-        Jake's Welding Co.
+        Strass Welding
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href="home">Home</Nav.Link>
-          <Nav.Link href="about">About</Nav.Link>
-          <NavDropdown title="More info" id="basic-nav-dropdown">
-            <NavDropdown.Item href="resume">Resume</NavDropdown.Item>
-            <NavDropdown.Item href="contact">
-              Contact for Pricing
-            </NavDropdown.Item>
-          </NavDropdown>
+          <Nav.Link href="work">Work</Nav.Link>
+          <Nav.Link href="contact">Contact</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
@@ -49,29 +42,29 @@ function Home() {
   return (
     <div>
       <Jumbotron>
-        <h1>Jake's Welding Co.</h1>
+        <h1 style = {{fontWeight: "1000"}}>Strass Welding</h1>
         <p>
           On time with guaranteed high quality custom metal fabrication with
           fair and clear pricing.{" "}
         </p>
         <Image src="..\20151001_135507.jpg" fluid className="mb-3" />
         <p>
-          <Button variant="primary" href="about">
-            Learn more
+          <Button variant="primary" href="contact">
+            Contact for more information
           </Button>
         </p>
       </Jumbotron>
 
       <CardGroup>
         <Card>
-          <Card.Img variant="top" src="..\20160922_141205.jpg" />
+          <Card.Img variant="top" src="..\Card1.jpg" />
           <Card.Body>
             <Card.Title>Flexible</Card.Title>
             <Card.Text>Available for work across Western Colorado.</Card.Text>
           </Card.Body>
         </Card>
         <Card>
-          <Card.Img variant="top" src="..\20160914_154825.jpg" />
+          <Card.Img variant="top" src="..\Card2.jpg" />
           <Card.Body>
             <Card.Title>Professional</Card.Title>
             <Card.Text>Strong work ethic. Punctual. Honest</Card.Text>
@@ -79,7 +72,7 @@ function Home() {
           
         </Card>
         <Card>
-          <Card.Img variant="top" src="..\Hanging Lake.jpg" />
+          <Card.Img variant="top" src="..\Card3.jpg" />
           <Card.Body>
             <Card.Title>Reliable</Card.Title>
             <Card.Text>
@@ -93,93 +86,64 @@ function Home() {
     </div>
   );
 }
-function About() {
-  return (
-    <div>
-      <Jumbotron>
-        <h1>About Jake</h1>
 
-        <Image src="..\-3962722664213478831.jpg" fluid className="mb-3" />
-      </Jumbotron>
-
-      <Alert variant="success">
-        <Alert.Heading>Hi, nice to see you</Alert.Heading>
-        <p>
-          Jake is originally from Scottsdale, Arizona. He moved to
-          Eagle,Colorado in 2018. After working in the hotel maintainence
-          industry, he shifted his career into welding. He studied welding at
-          Colorado Mountain College in Leadville, Colorado where he received
-          high marks. He is currently training to earn a master welder
-          certification. Jake loves to be outdoors, hiking, fishing, and off
-          roading on the weekends.
-        </p>
-        <hr />
-        <p className="mb-0">Reach out to Jake for any welding needs.</p>
-        <Button href="../contact">
-          Click here for his contact information
-        </Button>
-      </Alert>
-    </div>
-  );
-}
-function Resume() {
+function Work() {
   return (
+    <>
+    <Container>
+      <Row>
+        <Col></Col>
+        <Col xs ={6}>
     <Carousel>
       <Carousel.Item>
-        <img className="d-block w-100" src="..\1.jpg" alt="Pipe framing" />
-        <CarouselCaption>
-          <h3>Pipe welding</h3>
-        </CarouselCaption>
+      <img
+      className="d-block w-100"
+      src="2.jpg"
+      alt="First slide"
+      />
       </Carousel.Item>
-
       <Carousel.Item>
-        <img className="d-block w-100" src="..\2.jpg" alt="Boiler Removal" />
-        <CarouselCaption>
-          <h3>Boiler removal</h3>
-        </CarouselCaption>
+      <img
+      className="d-block w-100"
+      src="3.jpg"
+      alt="First slide"
+      />
       </Carousel.Item>
-
       <Carousel.Item>
-        <img className="d-block w-100" src="..\3.jpg" alt="Welding man" />
-        <CarouselCaption>
-          <h3>Door framing and security</h3>
-        </CarouselCaption>
+      <img
+      className="d-block w-100"
+      src="4.jpg"
+      alt="First slide"
+      />
       </Carousel.Item>
-
       <Carousel.Item>
-        <img className="d-block w-100" src="..\4.jpg" alt="P" />
-        <CarouselCaption>
-          <h3>Trailer fabrication step 1</h3>
-        </CarouselCaption>
+      <img
+      className="d-block w-100"
+      src="5.jpg"
+      alt="First slide"
+      />
       </Carousel.Item>
-
       <Carousel.Item>
-        <img className="d-block w-100" src="..\5.jpg" alt="i" />
-        <CarouselCaption>
-          <h3>Trailer fabrication step 2</h3>
-        </CarouselCaption>
-      </Carousel.Item>
-
-      <Carousel.Item>
-        <img className="d-block w-100" src="..\6.jpg" alt="g" />
-        <CarouselCaption>
-          <h3>Trailer fabrication step 3</h3>
-        </CarouselCaption>
-      </Carousel.Item>
-
-      <Carousel.Item>
-        <img className="d-block w-100" src="..\7.jpg" alt="ng" />
-        <CarouselCaption>
-          <h3>Trailer fabrication step 4</h3>
-        </CarouselCaption>
+      <img
+      className="d-block w-100"
+      src="6.jpg"
+      alt="First slide"
+      />
       </Carousel.Item>
     </Carousel>
-  );
+    </Col>
+    <Col></Col>
+    </Row>
+    </Container>
+    </>
+  )
 }
+
 function Footer() {
   return (
     <footer className="footer mt-auto py-3 bg-dark text-white">
       <div className="container"></div>
+      <p>Strass Welding - (602)695-5460 - P.O. Box 4866 Eagle CO, 81631 - strasswelding@gmail.com </p>  
     </footer>
   );
 }
@@ -193,28 +157,21 @@ function ContactForm() {
   const [isAlpha, setIsAlpha] = useState(false);
   const [isNumeric, setIsNumeric] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(false);
-  const client = useStaticKit();
-  const handleSubmit = async event => {
-    event.preventDefault();
-    sendContactInformation(client, {
-      subject: "Contact from Jake's App",
-      fields: {
-        body: ` You have been contacted by ${first} ${last}. Their email address is ${email} and their phone number is ${phone}}`
-      }
-    });
-  };
-
+  const [state, handleSubmit] = useForm("mwkaryar");
+  if (state.succeeded) {
+    return <p>We will be in contact soon!</p>;
+}
   return (
     <>
-      <Jumbotron>
-        <h1>Contact Jake</h1>
+      <Carousel>
+        <h1>Contact StrassWelding</h1>
         <p>Available for jobs across Western Colorado</p>
         <Image src="..\Capture.PNG" fluid className="mb-3" />
-      </Jumbotron>
+      </Carousel>
 
       <h1>
         {" "}
-        To contact Jake, please enter your information below and he will contact
+        To contact StrassWelding, please enter your information below and he will contact
         you as soon as possible.
       </h1>
 
@@ -349,19 +306,15 @@ function ContactForm() {
 function App() {
   return (
     <>
-      <StaticKitProvider site="6651379c3e06">
         <Router>
           <div className="App">
             <Header />
             <Switch>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/resume">
-                <Resume />
-              </Route>
               <Route path="/contact">
                 <ContactForm />
+              </Route>
+              <Route path="/work">
+                <Work />
               </Route>
               <Route path="/">
                 <Home />
@@ -370,7 +323,6 @@ function App() {
             <Footer />
           </div>
         </Router>
-      </StaticKitProvider>
     </>
   );
 }
